@@ -45,10 +45,20 @@
          location / {
              expires -1;
              add_header Pragma "no-cache";
-             root home/localhost/public_html;
+             root your/path;
              add_header Cache-Control "no-store, no-cache, must-revalidate, post-check=0, pre-check=0";
              try_files $uri $uri/ /index.html =404;
          }
+
+         Or htaccess
+
+         RewriteEngine on
+         RewriteCond %{REQUEST_FILENAME} -s [OR]
+         RewriteCond %{REQUEST_FILENAME} -l [OR]
+         RewriteCond %{REQUEST_FILENAME} -d
+         RewriteRule ^.*$ - [NC,L]
+
+         RewriteRule ^(.*) /your/path/index.html [NC,L]
          */
     }]);
 
