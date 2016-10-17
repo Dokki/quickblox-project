@@ -85,7 +85,7 @@
         /**
          * Set class active for menu in side bar to all parent tags
          * @param states
-         * @return {*}
+         * @return {Boolean}
          */
         $scope.active = function(states){
             if(states.length == 1)
