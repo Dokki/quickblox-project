@@ -1,0 +1,32 @@
+<div class="login_wrapper">
+    <div class="animate form login_form">
+        <section class="login_content">
+            <form name="formLogin" novalidate>
+                <h1>Login Form</h1>
+                <div>
+                    <input name="login" type="text" class="form-control" placeholder="Username" required="" ng-model="login" ng-disabled="disabled" ng-class="{ 'error' : formLogin.login.$invalid && !formLogin.login.$pristine }" />
+                </div>
+                <div>
+                    <input name="password" type="password" class="form-control" placeholder="Password" required="" ng-model="password" ng-disabled="disabled" ng-class="{ 'error' : formLogin.password.$invalid && !formLogin.password.$pristine }" />
+                </div>
+                <div>
+                    <a class="btn btn-default submit" ng-click="loginClick()" ng-class="{disabled: disabled || formLogin.$invalid}">Log in</a>
+                    <a class="reset_pass" ng-click="ohhMyGod()">ohh my god, click me</a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="separator">
+
+                    <div class="clearfix"></div>
+                    <br />
+
+                    <div>
+                        <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+                        <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,88 @@
+<div>
+    <div class="page-title">
+        <div class="title_left">
+            <h3>{{titleTab}}</h3>
+        </div>
+
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                          <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <div>
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>События <small>basic table subtitle</small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Settings 1</a>
+                            </li>
+                            <li><a href="#">Settings 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+                <table class="table tableEvents" ng-table="tableParams" ng-form="tableForm" disable-filter="isAdding" tracked-table="tableTracker">
+                    <tr ng-repeat="row in $data" ng-form="rowForm" tracked-table-row="row">
+                        <td data-title="'Название'" ng-switch="row.isEditing" ng-class="Title.$dirty ? 'bg-warning' : ''" ng-form="Title" tracked-table-cell>
+                            <span ng-switch-default class="editable-text">{{row.Title}}</span>
+                            <div class="controls" ng-class="Title.$invalid && Title.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                <input type="text" name="Title" ng-model="row.Title" class="editable-input form-control input-sm" required />
+                            </div>
+                        </td>
+
+                        <td data-title="'Описание'" ng-switch="row.isEditing" ng-class="Description.$dirty ? 'bg-warning' : ''" ng-form="Description" tracked-table-cell>
+                            <span ng-switch-default class="editable-text">{{row.Description}}</span>
+                            <div class="controls" ng-class="Description.$invalid && Description.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                <textarea type="text" name="Description" ng-model="row.Description" class="editable-input form-control input-sm" required ></textarea>
+                            </div>
+                        </td>
+
+                        <td data-title="'Дата начала'" sortable="'BeginDate'" ng-switch="row.isEditing" ng-class="BeginDate.$dirty ? 'bg-warning' : ''" ng-form="BeginDate" tracked-table-cell>
+
+                            <span ng-switch-default class="editable-text">{{row.BeginDate}}</span>
+                            <div class="controls" ng-class="BeginDate.$invalid && BeginDate.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                <input type="text" name="BeginDate" ng-model="row.BeginDate" class="editable-input form-control input-sm" required />
+                            </div>
+                        </td>
+
+                        <td data-title="'Дата конца'" sortable="'EndDate'" ng-switch="row.isEditing" ng-class="EndDate.$dirty ? 'bg-warning' : ''" ng-form="EndDate" tracked-table-cell>
+                            <span ng-switch-default class="editable-text">{{row.EndDate}}</span>
+                            <div class="controls" ng-class="EndDate.$invalid && EndDate.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                                <input type="text" name="EndDate" ng-model="row.EndDate" class="editable-input form-control input-sm" required />
+                            </div>
+                        </td>
+
+                        <td data-title="'Ред'">
+                            <button class="btn btn-primary btn-sm" ng-click="save(row, rowForm)" ng-if="row.isEditing" ng-disabled="rowForm.$pristine || rowForm.$invalid"><span class="glyphicon glyphicon-ok"></span></button>
+                            <button class="btn btn-default btn-sm" ng-click="cancel(row, rowForm)" ng-if="row.isEditing"><span class="glyphicon glyphicon-remove"></span></button>
+                            <button class="btn btn-default btn-sm" ng-click="row.isEditing = true" ng-if="!row.isEditing"><span class="glyphicon glyphicon-pencil"></span></button>
+                        </td>
+                    </tr>
+                </table>
+
+                <div ng-show="show" style="text-align:center;margin-top:10px;">
+                    <i class="fa fa-spinner fa-spin fa-5x"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

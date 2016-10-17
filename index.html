@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="AdminPanel">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <base href="/">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{pageTitle || 'Админка'}}</title>
+
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom styling plus plugins -->
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/angular-ui-notification.css" rel="stylesheet">
+    <link href="css/ng-table.min.css" rel="stylesheet">
+</head>
+
+<body class="{{bodyClass}}" ng-controller="adminCtrl">
+
+    <div id="ui-view" ui-view></div>
+
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/lib/underscore-min.js"></script>
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/angular-ui-router.min.js"></script>
+    <script src="js/lib/angular-resource.min.js"></script>
+    <script src="js/lib/angular-ui-notification.min.js"></script>
+    <script src="js/lib/angular-webstorage.min.js"></script>
+    <script src="js/lib/ng-table.min.js"></script>
+    <script src="js/lib/hmac-sha1.js"></script>
+
+    <!-- app -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/directives.js"></script>
+    <script src="js/factories.js"></script>
+    <script src="js/services.js"></script>
+  </body>
+</html>
