@@ -142,9 +142,9 @@
          * @param rowForm {Object} object Form ngTable
          */
         function cancel(row, rowForm) {
-            angular.extend(resetRow(row, rowForm), _.findWhere(originalTable, function(r){
+            angular.extend(_.findWhere(originalTable, function(r){
                 return r._id === row._id;
-            }));
+            }), resetRow(row, rowForm));
         }
 
         /**
@@ -171,7 +171,7 @@
                 function(json){
                     var originalRow = resetRow(row, rowForm);
 
-                    angular.extend(originalRow, row);
+                    //angular.extend(originalRow, row);
 
                     angular.forEach(originalTable, function(value, key){
                         if(originalTable[key]._id == row._id)
@@ -195,6 +195,7 @@
         function resetRow(row, rowForm){
             row.isEditing = false;
             rowForm.$setPristine();
+
             $scope.tableTracker.untrack(row);
 
             return _.findWhere($scope.tableParams.data, function(r){
@@ -250,9 +251,9 @@
          * @param rowForm {Object} object Form ngTable
          */
         function cancel(row, rowForm) {
-            angular.extend(resetRow(row, rowForm), _.findWhere(originalTable, function(r){
+            angular.extend(_.findWhere(originalTable, function(r){
                 return r._id === row._id;
-            }));
+            }), resetRow(row, rowForm));
         }
 
         /**
@@ -270,26 +271,26 @@
                 }),
                 rowToSave = {};
 
-            angular.forEach(['FirstName', 'LastName', 'Биография', 'Birthday'], function(value){
+            angular.forEach(['FirstName', 'LastName', 'Bio', 'Birthday'], function(value){
                 if(originalTableRow[value] != row[value])
                     rowToSave[value] = row[value];
             });
 
-            Tables.setToken(Session.getSession().token).update({className: 'Event', data: 'data', id: row._id + '.json'}, rowToSave).$promise.then(
+            Tables.setToken(Session.getSession().token).update({className: 'Speaker', data: 'data', id: row._id + '.json'}, rowToSave).$promise.then(
                 function(json){
                     var originalRow = resetRow(row, rowForm);
 
-                    angular.extend(originalRow, row);
+                    //angular.extend(originalRow, row);
 
                     angular.forEach(originalTable, function(value, key){
                         if(originalTable[key]._id == row._id)
                             angular.extend(originalTable[key], rowToSave);
                     });
 
-                    Notification({message: 'Сохранено', title: 'Таблица События'});
+                    Notification({message: 'Сохранено', title: 'Таблица Докладчики'});
                 },
                 function(){
-                    Notification.error({message: 'Произошла ошибка, попробуйте позже.', title: 'Таблица События'});
+                    Notification.error({message: 'Произошла ошибка, попробуйте позже.', title: 'Таблица Докладчики'});
                 }
             );
         }
